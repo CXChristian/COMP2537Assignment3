@@ -1,0 +1,12 @@
+#pokemon {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.pokeCard {
+    width: 200px;
+    height: 200px;
+    margin: 5px;
+    align-items: center;
+}
