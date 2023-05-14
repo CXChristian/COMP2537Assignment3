@@ -90,8 +90,12 @@ const setup = async () => {
         console.log("numPageBtn: ", numPageBtn);
 
         for (let i = startI; i <= endI; i++) {
+            var active = "";
+            if (i == currentPage) {
+                active = "active";
+            }
             $(`#pagination`).append(`
-        <button type="button" class="btn btn-primary pageBtn" id="page${i}" pageNum="${i}">${i}</button>
+        <button type="button" class="btn btn-primary pageBtn ${active}" id="page${i}" pageNum="${i}">${i}</button>
         `)
         }
     };
