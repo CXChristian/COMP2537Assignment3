@@ -89,6 +89,15 @@ const setup = async () => {
         console.log("currentPage: ", currentPage);
         console.log("numPageBtn: ", numPageBtn);
 
+        if(currentPage > 1) {
+            $('#pagination').append(`
+            <button type="button" class="btn btn-primary pageBtn" id="pagefirst" pageNum="1">First</button>
+            `);
+            $('#pagination').append(`
+            <button type="button" class="btn btn-primary pageBtn" id="pageprev" pageNum="${currentPage-1}">Prev</button>
+            `);
+        }
+
         for (let i = startI; i <= endI; i++) {
             var active = "";
             if (i == currentPage) {
@@ -97,6 +106,15 @@ const setup = async () => {
             $(`#pagination`).append(`
         <button type="button" class="btn btn-primary pageBtn ${active}" id="page${i}" pageNum="${i}">${i}</button>
         `)
+        }
+
+        if(currentPage < numPages) {
+            $('#pagination').append(`
+            <button type="button" class="btn btn-primary pageBtn" id="pagenext" pageNum="${currentPage+1}">Next</button>
+            `);
+            $('#pagination').append(`
+            <button type="button" class="btn btn-primary pageBtn" id="pagelast" pageNum="${numPages}">Last</button>
+            `);
         }
     };
 };
