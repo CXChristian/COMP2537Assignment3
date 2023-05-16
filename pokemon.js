@@ -113,14 +113,17 @@ const setup = async () => {
                             if (count2 == 0){
                                 if (filteredTypes[1] == pokemonRefTypes[1]){
                                     pokemon.push(filterPokemon[count])
+                                    console.log("pokemon added: ",pokemon.length)
                                 } 
                             } else if (count2 == 1) {
                                 if (filteredTypes[1] == pokemonRefTypes[0]){
                                     pokemon.push(filterPokemon[count])
+                                    console.log("pokemon added: ",pokemon.length)
                                 }
                             }
                         } else if (filteredTypes.length == 1) {
                             pokemon.push(filterPokemon[count])
+                            console.log("pokemon added: ",pokemon.length)
                         }
                     }
                 }  
