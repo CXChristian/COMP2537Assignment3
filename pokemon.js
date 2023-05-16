@@ -192,20 +192,39 @@ const setup = async () => {
                 `)
             }
         } else {
-            for (let i = ((currentPage - 1) * numPerPage); i < ((currentPage - 1) * numPerPage) + numPageLast; i++) {
-                cardCount++
-                console.log(cardCount)
-                let innerResponse = await axios.get(`${pokemon[i].url}`);
-                let thisPokemon = innerResponse.data;
-                console.log(thisPokemon);
-                $('#pokemon').append(`
-                <div class="pokeCard card" pokeName=${thisPokemon.name}>
-                    <h3>${thisPokemon.name}</h3>
-                    <img src="${thisPokemon.sprites.front_default}" alt="${thisPokemon.name}"/>
-                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#pokeModal">More</button>
-                </div>  
-                `)      
-        }}
+            if (numPageLast == 0) {
+                for (let i = ((currentPage - 1) * numPerPage); i < ((currentPage - 1) * numPerPage) + numPerPage; i++) {
+                    cardCount++
+                    console.log(cardCount)
+                    let innerResponse = await axios.get(`${pokemon[i].url}`);
+                    let thisPokemon = innerResponse.data;
+                    console.log(thisPokemon);
+                    $('#pokemon').append(`
+                    <div class="pokeCard card" pokeName=${thisPokemon.name}>
+                        <h3>${thisPokemon.name}</h3>
+                        <img src="${thisPokemon.sprites.front_default}" alt="${thisPokemon.name}"/>
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#pokeModal">More</button>
+                    </div>  
+                    `)
+                }
+            } else {
+                for (let i = ((currentPage - 1) * numPerPage); i < ((currentPage - 1) * numPerPage) + numPageLast; i++) {
+                    cardCount++
+                    console.log(cardCount)
+                    let innerResponse = await axios.get(`${pokemon[i].url}`);
+                    let thisPokemon = innerResponse.data;
+                    console.log(thisPokemon);
+                    $('#pokemon').append(`
+                    <div class="pokeCard card" pokeName=${thisPokemon.name}>
+                        <h3>${thisPokemon.name}</h3>
+                        <img src="${thisPokemon.sprites.front_default}" alt="${thisPokemon.name}"/>
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#pokeModal">More</button>
+                    </div>  
+                    `)      
+                }
+            }
+            
+    }
         $('#header').empty();
 
         $('#header').append(`
